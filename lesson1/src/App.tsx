@@ -10,20 +10,17 @@ const Facts: string[] = [
 
 const App = () => {
   return (
-    <div>
+    <div className="bg-[#282D35] h-screen">
       <nav className="flex items-center gap-2 bg-[#21222A] px-12 py-8">
-        <img src={reactLogo} alt="" className="w-10 h-10" />
+        <img src={reactLogo} alt="" className="" />
         <h1 className="text-xl text-[#61DAFB]">ReactFacts</h1>
       </nav>
-      <main className="bg-[#282D35] h-[89vh] flex justify-center pt-28 bg-[url('./assets/Group.png')] bg-right bg-contain bg-no-repeat" >
-        <ul className="text-gray-300 text-3xl space-y-2.5 max-md:px-4 max-sm:text-lg">
+      <main className="text-gray-300 pl-30 my-30 bg-[url('./assets/Group.png')] bg-right bg-contain bg-no-repeat" >
+        <h1 className="text-5xl pb-10 font-bold">Fun Facts About React</h1>
+        <ul className="text-2xl space-y-2.5 list-disc pl-8 marker:text-blue-400">
           {
             Facts.map((fact: string, index: number) => {
-              return (
-              <li key={index} className="flex gap-4 items-center">
-                <div className="w-3 h-3 rounded-full bg-blue-400"></div>
-                <h1>{fact}</h1>
-              </li>)
+              return <li key={index} className="flex gap-4 items-center marker:*:text-blue-500">{fact}</li>
             })
           }
         </ul>
