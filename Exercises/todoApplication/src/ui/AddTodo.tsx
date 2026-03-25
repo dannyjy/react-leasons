@@ -11,11 +11,15 @@ const AddTodo = () => {
     function getData(formData: FormData){
         const { task } = Object.fromEntries(formData)
         if(task === null || task === '') return;
-        setTodo((tasks) => [...tasks, { id: tasks.length + 1, isComplete: false, text: task.toString() }])
+        setTodo((tasks) => [...tasks, { id: todo.length + 1, isComplete: false, text: task.toString() }])
     }
 
     function removeAllTasks(){
-        setTodo([])
+        const answer: boolean = confirm("Are you sure you want to clear all Tasks")
+        if(answer){
+            setTodo([])
+        }
+        return;
     }
 
     function deleteTask(id: number){

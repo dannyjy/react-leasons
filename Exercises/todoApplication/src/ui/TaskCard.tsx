@@ -6,7 +6,7 @@ const TaskCard = ({ id, isCompleted, text, onDelete, handleChange }: TaskCardTyp
         <div className="flex items-center justify-between ">
             <section className="flex gap-4 ">
                 <input type="checkbox" name="completed" id="completed" title='completed' onChange={() => handleChange(id)}/>
-                <span className={`${isCompleted ? 'line-through' : ''}`}>{text}</span>
+                <span className={`${isCompleted ? 'line-through' : null}`}>{text}</span>
             </section>
             <div className={`rounded-full bg-white p-1 cursor-pointer`} onClick={() => onDelete(id)}>
                 <img src={deleteImage} alt="Trash Icon" className='w-5 h-5'/>
