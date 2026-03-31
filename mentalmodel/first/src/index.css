@@ -1,0 +1,12 @@
+@import 'tailwindcss';
+
+body{
+    background: #fafefa;
+}
+
+button {
+    color: white;
+    border-radius: .4rem;
+    padding: .5rem 1rem;
+    background: #000000;
+}
