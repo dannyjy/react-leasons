@@ -1,40 +1,29 @@
-// import React from 'react'
+import ReactMarkdown from "react-markdown"
+import { type ClaudResponseProps } from '../types/types'
 
-const ClaudResponse = () => {
+const ClaudResponse = ({ response, isLoading, error }: ClaudResponseProps) => {
     return (
-        <section className="max-w-165">
+        <section className="max-w-165" aria-live="polite">
             <h2 className="text-2xl font-bold pb-4">Chef Claude Recommends:</h2>
-            <article className="space-y-4" aria-live="polite">
-                <div>
-                    <p>Based on the ingredients you have available, I would recommend making a simple a delicious <strong>Beef Bolognese Pasta</strong>. Here is the recipe:</p>
-                    <h1>Beef Bolognese Pasta</h1>
-                </div>
-                <strong>Ingredients:</strong>
-                <ul className="list-disc pt-2">
-                    <li>1 lb. ground beef</li>
-                    <li>1 onion, diced</li>
-                    <li>3 cloves garlic, minced</li>
-                    <li>2 tablespoons tomato paste</li>
-                    <li>1 (28 oz) can crushed tomatoes</li>
-                    <li>1 cup beef broth</li>
-                    <li>1 teaspoon dried oregano</li>
-                    <li>1 teaspoon dried basil</li>
-                    <li>Salt and pepper to taste</li>
-                    <li>8 oz pasta of your choice (e.g., spaghetti, penne, or linguine)</li>
-                </ul>
-                <strong>Instructions:</strong>
-                <ol className="list-decimal pt-2">
-                    <li>Bring a large pot of salted water to a boil for the pasta.</li>
-                    <li>In a large skillet or Dutch oven, cook the ground beef over medium-high heat, breaking it up with a wooden spoon, until browned and cooked through, about 5-7 minutes.</li>
-                    <li>Add the diced onion and minced garlic to the skillet and cook for 2-3 minutes, until the onion is translucent.</li>
-                    <li>Stir in the tomato paste and cook for 1 minute.</li>
-                    <li>Add the crushed tomatoes, beef broth, oregano, and basil. Season with salt and pepper to taste.</li>
-                    <li>Reduce the heat to low and let the sauce simmer for 15-20 minutes, stirring occasionally, to allow the flavors to meld.</li>
-                    <li>While the sauce is simmering, cook the pasta according to the package instructions. Drain the pasta and return it to the pot.</li>
-                    <li>Add the Bolognese sauce to the cooked pasta and toss to combine.</li>
-                    <li>Serve hot, garnished with additional fresh basil or grated Parmesan cheese if desired.</li>
-                </ol>
-            </article>
+            {isLoading && <p className="text-[#6b7280]">Generating your recipe...</p>}
+            {error && <p className="text-red-600">{error}</p>}
+            {!isLoading && !error && response && <ReactMarkdown
+            
+                components={{
+                    h1: ({ ...props }) => <h1 className="text-2xl font-bold mt-4 mb-2" {...props} />,
+                    h2: ({ ...props }) => <h2 className="text-xl font-semibold mt-4 mb-2" {...props} />,
+                    h3: ({ ...props }) => <h3 className="text-lg font-semibold mt-3 mb-2" {...props} />,
+                    p: ({ ...props }) => <p className="mb-3 leading-7 text-[#475467]" {...props} />,
+                    ul: ({ ...props }) => <ul className="list-disc pl-6 mb-3 space-y-1" {...props} />,
+                    ol: ({ ...props }) => <ol className="list-decimal pl-6 mb-3 space-y-1" {...props} />,
+                    a: ({ ...props }) => (
+                        <a className="text-[#d17557] underline" target="_blank" rel="noreferrer" {...props} />
+                    ),
+                    code: ({ ...props }) => (
+                        <code className="bg-[#f4f4f5] px-1 py-0.5 rounded text-sm" {...props} />
+                    ),
+                }}
+            >{response}</ReactMarkdown>}
         </section>
     )
 }
