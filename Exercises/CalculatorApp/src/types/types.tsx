@@ -5,14 +5,16 @@ type DigitBtnProp = {
 }
 
 type Action = {
-    type: "Evaluate" | "Clear" | "Add Digit" | "Percentage" | "Delete Digit" | "PositiveToggle"
+    type: "Evaluate" | "Clear" | "Add Digit" | "Percentage" | "Delete Digit" | "PositiveToggle" | "Operation"
     payload?: {
-        digit: string
+        digit?: string
+        operation?: string
     }
 }
 
 type State = {
+    prevOperand: string
     currentOperand: string
-    answer: string | null
+    operation: string
 }
 export type { DigitBtnProp, Action, State }
