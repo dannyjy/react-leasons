@@ -19,5 +19,4 @@ function evaluate({operation, prevOperand, currentOperand}: State): string {
     }
 }
 
-
 export default evaluate
