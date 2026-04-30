@@ -3,9 +3,9 @@ import Navbar from "./Navbar"
 
 function Main() {
   return (
-    <div className="bg-zinc-100">
+    <div className="">
         <Navbar />
-        <main className="h-screen">
+        <main className="h-full">
             <Outlet />
         </main>
     </div>
