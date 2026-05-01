@@ -15,7 +15,14 @@ const Home = () => {
     function handleInputChange(e: React.ChangeEvent<HTMLInputElement>){
         const value = e.target.value
         setInput(value)
-        setSearchParams({search: value})
+        setSearchParams(prev => {
+            if(value){
+                prev.set("search",value)
+            }else {
+                prev.delete("search")
+            }
+            return prev
+        }, { replace: true})
     }
     
     useEffect(() => {
