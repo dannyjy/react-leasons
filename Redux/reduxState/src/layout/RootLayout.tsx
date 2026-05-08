@@ -3,9 +3,9 @@ import SideBar from "../components/SideBar";
 
 export default function RootLayout() {
   return (
-    <div className="flex">
+    <div className="flex overflow-hidden h-screen">
       <SideBar />
-      <main className="p-4">
+      <main className="overflow-y-auto w-full no-scrollbar">
         <Outlet />
       </main>
     </div>

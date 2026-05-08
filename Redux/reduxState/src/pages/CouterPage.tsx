@@ -10,7 +10,7 @@ const CouterPage = () => {
     const Decrement = () => dispatch({ type: "DECREMENT"})
 
     return (
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 justify-center h-screen">
             <Button text="Decrement" onButtonClick={Decrement} style=""/>
             <h1>Counter: {count}</h1>
             <Button text="Increment" onButtonClick={Increment} style=""/>
